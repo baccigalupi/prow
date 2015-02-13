@@ -1,0 +1,10 @@
+{
+  "pages": {
+    "index.html": {
+      "data": {
+        "title": "Hello from Prow"
+      }
+    }
+  }
+}
+

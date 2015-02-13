@@ -30,6 +30,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "shipd_style"
   spec.add_dependency "mustache"
+  spec.add_dependency "vienna"
+  spec.add_dependency "inotify"
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rspec"

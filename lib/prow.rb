@@ -1,5 +1,6 @@
 require 'json'
 require 'forwardable'
+require 'fileutils'
 
 require 'mustache'
 
@@ -11,3 +12,5 @@ require "prow/templates"
 require "prow/renderer"
 require "prow/page_compiler"
 require "prow/pages_compiler"
+
+require "prow/app_builder/create"
