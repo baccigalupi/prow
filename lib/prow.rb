@@ -15,3 +15,4 @@ require "prow/page_compiler"
 require "prow/pages_compiler"
 
 require "prow/app_builder/create"
+require "prow/app_builder/style_compiler"

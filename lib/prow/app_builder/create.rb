@@ -12,7 +12,15 @@ module Prow
         copy('templates/layouts/default.mustache')
         copy('templates/pages/index.mustache')
         mkdir('sass')
-        ShipdStyle::CopyStylesheets.new(app_path + "/sass").perform
+        create_and_move_stylesheets
+      end
+
+      def create_and_move_stylesheets
+        ShipdStyle::CopyStylesheets.new(sass_path).perform
+        FileUtils.mv(sass_path + "/shipd-all.scss", sass_path + "/all.scss")
+        FileUtils.mv(sass_path + "/shipd-mobile.scss", sass_path + "/mobile.scss")
+        FileUtils.mv(sass_path + "/shipd-tablet.scss", sass_path + "/tablet.scss")
+        FileUtils.mv(sass_path + "/shipd-desktop.scss", sass_path + "/desktop.scss")
       end
 
       def mkdir(dir)
@@ -29,6 +37,10 @@ module Prow
 
       def app_path
         path || `pwd`.chomp
+      end
+
+      def sass_path
+        app_path + "/sass"
       end
     end
   end

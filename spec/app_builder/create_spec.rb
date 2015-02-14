@@ -42,4 +42,10 @@ RSpec.describe Prow::AppBuilder::Create do
     creator.perform
     expect(File.exist?(app_path + "/sass")).to be(true)
   end
+
+  it "renames the base style sheets to not include shipd" do
+    creator.perform
+    expect(File.exist?(app_path + "/sass/shipd-mobile.scss")).not_to be(true)
+    expect(File.exist?(app_path + "/sass/mobile.scss")).to be(true)
+  end
 end
