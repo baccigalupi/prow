@@ -1,7 +1,7 @@
 module Prow
   class DefaultPaths
     def base_path
-      File.dirname(__FILE__) + "/.."
+      `pwd`.chomp
     end
 
     def config_path
@@ -12,7 +12,7 @@ module Prow
       "#{base_path}/templates"
     end
 
-    def compiled_path
+    def compile_path
       "#{base_path}/public"
     end
   end

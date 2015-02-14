@@ -12,11 +12,11 @@ module Prow
         copy('templates/layouts/default.mustache')
         copy('templates/pages/index.mustache')
         mkdir('sass')
-        ShipdStyle::CopyStylesheets.new(path + "/sass").perform
+        ShipdStyle::CopyStylesheets.new(app_path + "/sass").perform
       end
 
       def mkdir(dir)
-        FileUtils.mkdir(app_path + "/" + dir)
+        FileUtils.mkdir(app_path + "/" + dir) unless File.exist?(dir)
       end
 
       def copy(file_path)
@@ -28,7 +28,7 @@ module Prow
       end
 
       def app_path
-        path || `pwd`
+        path || `pwd`.chomp
       end
     end
   end
