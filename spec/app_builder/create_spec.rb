@@ -37,4 +37,9 @@ RSpec.describe Prow::AppBuilder::Create do
     expect(File.exist?(app_path + "/templates/layouts/default.mustache")).to be(true)
     expect(File.exist?(app_path + "/templates/pages/index.mustache")).to be(true)
   end
+
+  it "copies over shipd style sass sheets" do
+    creator.perform
+    expect(File.exist?(app_path + "/sass")).to be(true)
+  end
 end

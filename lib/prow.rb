@@ -2,6 +2,7 @@ require 'json'
 require 'forwardable'
 require 'fileutils'
 
+require 'shipd_style'
 require 'mustache'
 
 require "prow/version"

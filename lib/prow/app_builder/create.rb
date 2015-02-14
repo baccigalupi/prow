@@ -11,6 +11,8 @@ module Prow
         copy('pages.json')
         copy('templates/layouts/default.mustache')
         copy('templates/pages/index.mustache')
+        mkdir('sass')
+        ShipdStyle::CopyStylesheets.new(path + "/sass").perform
       end
 
       def mkdir(dir)
