@@ -48,4 +48,9 @@ RSpec.describe Prow::AppBuilder::Create do
     expect(File.exist?(app_path + "/sass/shipd-mobile.scss")).not_to be(true)
     expect(File.exist?(app_path + "/sass/mobile.scss")).to be(true)
   end
+
+  it "copies over partial templates from shipd_style" do
+    creator.perform
+    expect(File.exist?(app_path + "/templates/partials/carousel.mustache")).to be(true)
+  end
 end

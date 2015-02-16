@@ -9,10 +9,19 @@ module Prow
         mkdir('templates/pages')
         mkdir('templates/partials')
         copy('pages.json')
-        copy('templates/layouts/default.mustache')
-        copy('templates/pages/index.mustache')
         mkdir('sass')
         create_and_move_stylesheets
+        copy_pages_and_layouts
+        copy_partials
+      end
+
+      def copy_pages_and_layouts
+        copy('templates/layouts/default.mustache')
+        copy('templates/pages/index.mustache')
+      end
+
+      def copy_partials
+        ShipdStyle::CopyDirectory.new(path + "/templates/partials", "templates").perform
       end
 
       def create_and_move_stylesheets
