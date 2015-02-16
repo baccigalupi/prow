@@ -22,4 +22,4 @@ tmp
 mkmf.log
 
 spec/support/public
-spec/support/app/*
+spec/support/app

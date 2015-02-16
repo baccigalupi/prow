@@ -40,7 +40,7 @@ RSpec.describe Prow::AppBuilder::Create do
 
   it "copies over shipd style sass sheets" do
     creator.perform
-    expect(File.exist?(app_path + "/sass")).to be(true)
+    expect(File.exist?(app_path + "/sass/mobile")).to be(true)
   end
 
   it "renames the base style sheets to not include shipd" do

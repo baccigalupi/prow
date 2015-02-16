@@ -2,7 +2,8 @@
   "pages": {
     "index.html": {
       "data": {
-        "title": "Hello from Prow"
+        "title": "Hello from Prow",
+        "header": "Welcome to Prow"
       }
     }
   }

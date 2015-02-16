@@ -3,6 +3,7 @@ namespace :prow do
   task :create do
     Prow::AppBuilder::Create.new.perform
     Prow::PagesCompiler.new.compile
+    Prow::AppBuilder::StyleCompiler.perform
   end
 
   namespace :compile do
