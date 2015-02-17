@@ -1,5 +1,5 @@
 require_relative "../lib/prow"
-require_relative "support/silence_warnings"
+$VERBOSE = nil # to silence warnings from Celluloid
 
 RSpec.configure do |config|
   #config.full_backtrace = true
