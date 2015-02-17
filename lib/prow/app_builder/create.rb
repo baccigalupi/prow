@@ -5,10 +5,11 @@ module Prow
         copy('config.ru')
         mkdir('public')
         mkdir('templates')
+        mkdir('config')
         mkdir('templates/layouts')
         mkdir('templates/pages')
         mkdir('templates/partials')
-        copy('pages.json')
+        copy('config/pages.json')
         copy_partials
         mkdir('sass')
         create_and_move_stylesheets

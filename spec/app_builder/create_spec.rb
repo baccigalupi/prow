@@ -28,8 +28,8 @@ RSpec.describe Prow::AppBuilder::Create do
 
   it "should copy the pages.json file" do
     creator.perform
-    expect(File.exist?(app_path + "/pages.json")).to be(true)
-    expect(File.read(app_path + "/pages.json")).to eq(File.read(app_templates_path + "/pages.json"))
+    expect(File.exist?(app_path + "/config/pages.json")).to be(true)
+    expect(File.read(app_path +   "/config/pages.json")).to eq(File.read(app_templates_path + "/config/pages.json"))
   end
 
   it "adds a sample layout and home page" do
