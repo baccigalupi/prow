@@ -3,7 +3,7 @@ namespace :prow do
   task :create do
     Prow::AppBuilder::Create.new.perform
     Prow::PagesCompiler.new.compile
-    Prow::AppBuilder::StyleCompiler.perform
+    Prow::AppBuilder::StyleCompiler.new.perform
   end
 
   namespace :compile do
@@ -16,15 +16,16 @@ namespace :prow do
     task :css do
       Prow::AppBuilder::StyleCompiler.new.perform
     end
+  end
 
-    desc "Watch and automatically update pages and css"
-    task :watch do
-      Prow::Runner.new.start
-    end
+  desc "Compile html and css"
+  task :compile do
+    Prow::PagesCompiler.new.compile
+    Prow::AppBuilder::StyleCompiler.new.perform
+  end
 
-    desc "Runs the app"
-    task :run do
-      `rackup`
-    end
+  desc "Runs the app"
+  task :run do
+    `rackup`
   end
 end

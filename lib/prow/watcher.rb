@@ -1,5 +1,11 @@
 module Prow
-  class Watcher < Struct.new(:paths)
+  class Watcher
+    attr_reader :paths
+
+    def initialize(paths=nil)
+      @paths = paths || Paths.new
+    end
+
     def start
       watch_all
     end
