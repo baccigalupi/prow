@@ -14,7 +14,7 @@ namespace :prow do
 
     desc "Uses compass to compile all the styles sheets in the sass directory"
     task :css do
-      Prow::AppBuilder::StyleCompiler.perform
+      Prow::AppBuilder::StyleCompiler.new.perform
     end
 
     desc "Run the app, watching for changes to templates and CSS"
