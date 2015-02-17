@@ -1,12 +1,14 @@
 module Prow
   module AppBuilder
     class StyleCompiler
-      def perform
-        `compass compile --css-dir=public/stylesheets`
+      attr_reader :paths
+
+      def initialize(paths = nil)
+        @paths = paths || Paths.new
       end
 
-      def self.perform
-        new.perform
+      def perform
+        `compass compile --sass-dir=#{paths.sass} --css-dir=#{paths.stylesheets}`
       end
     end
   end

@@ -1,5 +1,5 @@
 module Prow
-  class PageCompiler < Struct.new(:name, :config, :templates, :compile_dir)
+  class PageCompiler < Struct.new(:page, :templates, :compile_dir)
     def compile
       File.open(path, 'w+') do |f|
         f.write(render)
@@ -10,24 +10,20 @@ module Prow
       return @renderer if defined?(@renderer)
       @renderer = Renderer.new
       @renderer.templates = templates
-      @renderer.page_name = name.split('.').first
+      @renderer.page_name = page.name
       @renderer
     end
 
     def render
-      renderer.render(layout.content, data)
+      renderer.render(layout.content, page.data)
     end
 
     def layout
-      templates.layout(config['layout'] || 'default')
-    end
-
-    def data
-      config['data'] || {}
+      templates.layout(page.layout)
     end
 
     def path
-      compile_dir + "/" + name
+      compile_dir + "/" + page.file_name
     end
   end
 end

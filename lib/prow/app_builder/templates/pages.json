@@ -3,7 +3,7 @@
     "index.html": {
       "data": {
         "title": "Hello from Prow",
-        "header": "Welcome to Prow"
+        "text_logo": "Prow by Shipd Software"
       }
     }
   }

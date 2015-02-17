@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Prow::AppBuilder::Create do
   let(:creator) { Prow::AppBuilder::Create.new(app_path) }
-  let(:app_path) { File.dirname(__FILE__) + "/../support/app" }
+  let(:app_path) { File.dirname(__FILE__) + "/../support/fixtures/app" }
   let(:app_templates_path) { File.dirname(__FILE__) + "/../../lib/prow/app_builder/templates" }
 
   before { `rm -rf #{app_path}/*` }

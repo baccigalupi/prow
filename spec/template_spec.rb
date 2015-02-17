@@ -3,14 +3,16 @@ require 'spec_helper'
 RSpec.describe Prow::Template do
   let(:template) { Prow::Template.new(path, templates_path) }
   let(:path) { templates_path + "/layouts/default.mustache" }
-  let(:templates_path) { File.dirname(__FILE__) + "/support/templates" }
+  let(:templates_path) { File.dirname(__FILE__) + "/support/fixtures/templates" }
 
   it "derives the type from the first directory name" do
     expect(template.type).to eq("layouts")
   end
 
   it "returns lazy the template content" do
-    expect(template.instance_variable_get('@content')).to eq(nil)
+    silence_warnings do
+      expect(template.instance_variable_get('@content')).to eq(nil)
+    end
     expect(template.content).to eq(File.read(path))
     expect(template.instance_variable_get('@content')).not_to eq(nil)
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Prow::Templates do
   let(:templates) { Prow::Templates.new(templates_path) }
-  let(:templates_path) { File.dirname(__FILE__) + "/support/templates" }
+  let(:templates_path) { File.dirname(__FILE__) + "/support/fixtures/templates" }
 
   describe '#layout' do
     it "returns layouts via name" do
@@ -29,7 +29,7 @@ RSpec.describe Prow::Templates do
 
   describe '#partials' do
     it "returns all of the partials" do
-      expect(templates.partials.size).to eq(2)
+      expect(templates.partials.size).to be > 2
       expect(templates.partials.map(&:name)).to include("things/it", "header")
     end
   end

@@ -1,8 +1,9 @@
 require_relative "../lib/prow"
-
-#require 'nokogiri'
+require_relative "support/silence_warnings"
 
 RSpec.configure do |config|
+  #config.full_backtrace = true
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end

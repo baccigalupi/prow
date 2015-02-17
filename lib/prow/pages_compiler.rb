@@ -1,29 +1,23 @@
 module Prow
   class PagesCompiler
-    attr_reader :config_path, :templates_path, :compile_path
+    attr_reader :paths
 
-    def initialize(config_path=nil, templates_path=nil, compile_path=nil)
-      @config_path = config_path || default_paths.config_path
-      @templates_path = templates_path || default_paths.templates_path
-      @compile_path = compile_path || default_paths.compile_path
+    def initialize(paths=nil)
+      @paths = paths || Paths.new
     end
 
     def compile
-      page_configs.each do |page_name, page_config|
-        PageCompiler.new(page_name, page_config, templates, compile_path).compile
+      page_configs.each do |page|
+        PageCompiler.new(page, templates, paths.compile).compile
       end
     end
 
     def page_configs
-      @page_configs ||= PageConfigs.new(config_path)
+      @page_configs ||= PageConfigs.new(paths.pages_config)
     end
 
     def templates
-      @templates ||= Templates.new(templates_path)
-    end
-
-    def default_paths
-      @default_paths ||= DefaultPaths.new
+      @templates ||= Templates.new(paths.templates)
     end
   end
 end

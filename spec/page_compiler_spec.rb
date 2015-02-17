@@ -1,13 +1,16 @@
 require 'spec_helper'
 
 describe Prow::PageCompiler do
-  let(:compiler)     { Prow::PageCompiler.new(name, config, templates, compile_dir) }
-  let(:full_configs) { JSON.parse(File.read(File.dirname(__FILE__) + "/support/pages.json"))['pages'] }
+  let(:compiler)     { Prow::PageCompiler.new(page, templates, compile_dir) }
+  let(:page)         { Prow::Page.new([name, config]) }
+  let(:paths)        { Prow::Paths.new(File.dirname(__FILE__) + "/support/fixtures") }
+
+  let(:full_configs) { JSON.parse(File.read(paths.pages_config))['pages'] }
   let(:config)       { full_configs[name]}
   let(:name)         { 'index.html' }
-  let(:templates)    { Prow::Templates.new(File.dirname(__FILE__) + "/support/templates") }
-  let(:compile_dir)  { File.dirname(__FILE__) + "/support/public" }
-  let(:file_path)    { File.dirname(__FILE__) + "/support/public/index.html" }
+  let(:templates)    { Prow::Templates.new(paths.templates) }
+  let(:compile_dir)  { paths.compile }
+  let(:file_path)    { paths.compile + "/index.html" }
 
   before { File.delete(file_path) if File.exist?(file_path) }
 

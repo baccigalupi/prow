@@ -6,8 +6,14 @@ module Prow
       JSON.parse(File.read(path))
     end
 
+    def pages_array
+      load['pages'] || []
+    end
+
     def collection
-      @collection ||= load['pages'] || []
+      @collection ||= pages_array.map do |config|
+        Page.new(config)
+      end
     end
 
     def_delegators :collection, :each, :size

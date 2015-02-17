@@ -16,5 +16,10 @@ namespace :prow do
     task :css do
       Prow::AppBuilder::StyleCompiler.perform
     end
+
+    desc "Run the app, watching for changes to templates and CSS"
+    task :run do
+      Prow::Runner.new.start
+    end
   end
 end
