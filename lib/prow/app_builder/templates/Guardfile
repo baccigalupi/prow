@@ -1,0 +1,12 @@
+guard 'rake', :task => 'prow:compile:css' do
+  watch(/^sass\/.+$/)
+end
+
+guard 'rake', :task => 'prow:compile:html' do
+  watch(/^templates\/.+$/)
+end
+
+guard 'rack', :port => 9292 do
+  watch('Gemfile.lock')
+  watch('config.ru')
+end

@@ -13,6 +13,12 @@ RSpec.describe Prow::AppBuilder::Create do
     expect(File.read(app_path + "/config.ru")).to eq(File.read(app_templates_path + "/config.ru"))
   end
 
+  it "should copy the Guardfile file" do
+    creator.perform
+    expect(File.exist?(app_path + "/Guardfile")).to be(true)
+    expect(File.read(app_path + "/Guardfile")).to eq(File.read(app_templates_path + "/Guardfile"))
+  end
+
   it "should make the public directory" do
     creator.perform
     expect(File.exist?(app_path + "/public")).to be(true)

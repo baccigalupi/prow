@@ -20,5 +20,3 @@ require "prow/pages_compiler"
 
 require "prow/app_builder/create"
 require "prow/app_builder/style_compiler"
-
-require "prow/watcher"

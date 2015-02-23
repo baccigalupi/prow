@@ -5,6 +5,11 @@
         "title": "Hello from Prow",
         "text_logo": "Prow by Shipd Software"
       }
+    },
+    "404.html": {
+      "data": {
+        "title": "Oh, no! Page not found :("
+      }
     }
   }
 }

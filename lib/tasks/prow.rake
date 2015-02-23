@@ -24,8 +24,8 @@ namespace :prow do
     Prow::AppBuilder::StyleCompiler.new.perform
   end
 
-  desc "Runs the app"
+  desc "Runs the app and auto-compiles css and html"
   task :run do
-    `rackup`
+    `guard`
   end
 end

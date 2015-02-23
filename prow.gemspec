@@ -30,8 +30,11 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "shipd_style"
   spec.add_dependency "mustache"
-  spec.add_dependency "vienna"
-  spec.add_dependency "listen"
+  spec.add_dependency "thin"
+  spec.add_dependency "rack-contrib"
+  spec.add_dependency "guard"
+  spec.add_dependency "guard-rack"
+  spec.add_dependency "guard-rake"
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rspec"

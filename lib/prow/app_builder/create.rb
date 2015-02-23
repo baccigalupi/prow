@@ -3,6 +3,7 @@ module Prow
     class Create < Struct.new(:path)
       def perform
         copy('config.ru')
+        copy('Guardfile')
         mkdir('public')
         mkdir('templates')
         mkdir('config')
